@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  mongodb:
+    image : mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+  mongoclient:
+    image: mongoclient/mongoclient:latest
+    container_name: mongoclient
+    hostname: mongoclient
+    depends_on:
+      - mongodb
+    ports:
+      - 3300:3000
+  rabbitmq:
+    image: 'bitnami/rabbitmq:latest'
+    environment:
+      - RABBITMQ_USERNAME=${RABBITMQ_USERNAME}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+    ports:
+      - '4369:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
