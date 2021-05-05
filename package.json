@@ -1,5 +1,5 @@
 {
-  "name": "url-shortener",
+  "name": "ts-rabbitmq",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "dev": "nodemon"
   },
   "keywords": [],
-  "author": "",
+  "author": "hoangdv",
   "license": "ISC",
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

@@ -1,7 +1,4 @@
 import express, { Application } from 'express';
-
-import router from './routers/ShortenerRoute';
-
 class ApiApp {
   private application: Application;
 
@@ -30,8 +27,6 @@ class ApiApp {
     this.application.get('/', (_, res) => {
       res.json({ message: 'Welcome to our service!'});
     });
-
-    this.application.use('/urls', router.getRouter());
   }
 }
 
