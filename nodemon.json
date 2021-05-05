@@ -1,8 +1,9 @@
 {
   "watch": [
-    "src"
+    "src",
+    "public"
   ],
-  "ext": "ts",
+  "ext": "ts,js,html,css",
   "ignore": [
     "dist",
     "node_modules",

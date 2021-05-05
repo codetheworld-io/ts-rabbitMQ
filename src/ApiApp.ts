@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import path from 'path';
 class ApiApp {
   private application: Application;
 
@@ -6,6 +7,8 @@ class ApiApp {
     this.application = express();
     this.setupGlobalMiddleware();
     this.setupRouters();
+
+    this.application.use(express.static(path.join(__dirname, 'public')));
   }
 
   start(port: string | number = 3000) {
@@ -25,7 +28,7 @@ class ApiApp {
 
   private setupRouters() {
     this.application.get('/', (_, res) => {
-      res.json({ message: 'Welcome to our service!'});
+      res.redirect('/index.html');
     });
   }
 }
