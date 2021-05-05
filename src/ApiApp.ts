@@ -1,6 +1,7 @@
 import express, { Application, Request } from 'express';
 import path from 'path';
 import CookieHelper from './libs/CookieHelper';
+import SubscriptionRoute from './routers/SubscriptionRoute';
 import { v4 as uuid } from 'uuid';
 
 export type RequestWithUserId = Request & { userId?: string };
@@ -35,6 +36,8 @@ class ApiApp {
     this.application.get('/', (_, res) => {
       res.redirect('/index.html');
     });
+
+    this.application.use('/subscriptions', SubscriptionRoute.getRouter());
   }
 
   private handleUserSession() {

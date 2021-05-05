@@ -62,7 +62,21 @@ function updateBtn() {
 }
 
 function updateSubscriptionOnServer(subscription) {
-  // TODO: Send subscription to application server
+  if (subscription) {
+    fetch('/subscriptions', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+      credentials: 'same-origin',
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  } else {
+    fetch('/subscriptions', {
+      method: 'DELETE',
+      credentials: 'same-origin',
+    });
+  }
 
   const subscriptionJson = document.querySelector('.js-subscription-json');
   const subscriptionDetails =
