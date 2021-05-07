@@ -3,6 +3,7 @@ import path from 'path';
 import CookieHelper from './libs/CookieHelper';
 import SubscriptionRoute from './routers/SubscriptionRoute';
 import { v4 as uuid } from 'uuid';
+import NotificationRoute from './routers/NotificationRoute';
 
 export type RequestWithUserId = Request & { userId?: string };
 
@@ -38,6 +39,8 @@ class ApiApp {
     });
 
     this.application.use('/subscriptions', SubscriptionRoute.getRouter());
+
+    this.application.use('/notifications', NotificationRoute.getRouter());
   }
 
   private handleUserSession() {

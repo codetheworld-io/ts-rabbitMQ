@@ -47,9 +47,18 @@ self.addEventListener('push', function(event) {
   console.log('[Service Worker] Push Received.');
   console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-  const title = 'Push Codelab';
+  let data = {};
+
+  try {
+    data = event.data.json();
+  } catch (error) {
+    // NOOP
+    console.log('[Service Worker] Data is not a JSON string.');
+  }
+
+  const title = data.title || 'Push Codelab';
   const options = {
-    body: 'Yay it works.',
+    body: data.message || 'Yay it works.',
     icon: 'images/icon.png',
     badge: 'images/badge.png'
   };
