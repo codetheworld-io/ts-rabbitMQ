@@ -1,8 +1,8 @@
 import webpush, { RequestOptions } from 'web-push';
-import { ISubscriptionDocument } from "../models/SubscriptionModel";
+import { ISubscription } from "../models/SubscriptionModel";
 
 class WebPush {
-  pushToSubscription(subscription: ISubscriptionDocument, data = '') {
+  pushToSubscription(subscription: ISubscription, data: unknown = {}) {
     const options: RequestOptions = {
       vapidDetails: {
         subject: 'https://hoangdv.medium.com/',
@@ -14,8 +14,8 @@ class WebPush {
     };
 
     return webpush.sendNotification(
-      subscription.toJSON(),
-      data,
+      subscription,
+      JSON.stringify(data),
       options,
     );
   }

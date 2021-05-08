@@ -13,6 +13,10 @@ class NotificationRoute {
     this.router.post('/:userId', async (req, res, next) => {
       await PushController.pushNotificationToUser(req, res, next);
     });
+
+    this.router.post('/', async (req, res, next) => {
+      await PushController.pushAll(req, res, next);
+    });
   }
 
   getRouter() {

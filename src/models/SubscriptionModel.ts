@@ -1,6 +1,6 @@
 import { Document, Model, Schema, model } from 'mongoose';
 
-interface ISubscription {
+export interface ISubscription {
   userId: string;
   endpoint: string;
   expirationTime?: number;
