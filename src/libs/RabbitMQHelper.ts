@@ -36,7 +36,7 @@ class RabbitMQHelper {
     }
 
     this.channel = await (await this.getConnection()).createChannel();
-    await this.channel.assertQueue(this.queue, { durable: true });
+    await this.channel.assertQueue(this.queue, { durable: true, autoDelete: false });
 
     return this.channel;
   }
